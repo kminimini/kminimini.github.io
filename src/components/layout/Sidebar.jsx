@@ -1,107 +1,97 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
 import profileImage from '../../images/profile-image.jpg';
-import { Link } from 'react-router-dom';
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { 
+  SidebarWrapper, 
+  SidebarContent, 
+  ProfileSection, 
+  ProfileImage, 
+  ProfileName, 
+  SocialLinks, 
+  SocialLink, 
+  CategoryList, 
+  CategoryItem, 
+  CategoryLink, 
+  CategoryCount, 
+  BioSection, 
+  ViewCountSection 
+} from '../../styles/components/layout/Sidebar.styles';
 
-const SidebarWrapper = styled.aside`
-  width: 250px;
-  background-color: ${props => props.theme.background};
-  color: ${props => props.theme.text};
-  padding: 1rem;
-  height: 100vh;
-  position: fixed;
-  left: ${props => props.isOpen ? '0' : '-250px'};
-  top: 60px;
-  overflow-y: auto;
-  transition: left 0.3s ease-in-out;
-  z-index: 999;
+const Sidebar = ({ categories, isOpen, categoryCounts }) => {
+  const [viewCounts, setViewCounts] = useState({ daily: 0, total: 0 });
 
-  @media (min-width: 769px) {
-    left: 0;
-  }
-`;
+  useEffect(() => {
+    const updateViewCounts = () => {
+      const now = new Date();
+      const storedData = JSON.parse(localStorage.getItem('viewCounts')) || { 
+        daily: 0, 
+        total: 0, 
+        lastReset: now.toISOString(),
+        lastVisit: null
+      };
 
-const ProfileSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-top: 3rem;
-`;
+      const lastReset = new Date(storedData.lastReset);
+      const lastVisit = storedData.lastVisit ? new Date(storedData.lastVisit) : null;
 
-const ProfileImage = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  object-fit: cover;
-`;
+      // 마지막 방문이 없거나 다른 날짜인 경우에만 조회수 증가
+      if (!lastVisit || lastVisit.toDateString() !== now.toDateString()) {
+        // 자정이 지났는지 확인
+        if (now.toDateString() !== lastReset.toDateString()) {
+          storedData.daily = 1;
+          storedData.lastReset = now.toISOString();
+        } else {
+          storedData.daily += 1;
+        }
+        storedData.total += 1;
+        storedData.lastVisit = now.toISOString();
 
-const ProfileName = styled.h2`
-  margin-bottom: 1rem;
-`;
+        localStorage.setItem('viewCounts', JSON.stringify(storedData));
+      }
 
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-`;
+      setViewCounts({ daily: storedData.daily, total: storedData.total });
+    };
 
-const SocialLink = styled.a`
-  color: ${props => props.theme.text};
-  font-size: 1.5rem;
-  &:hover {
-    color: ${props => props.theme.primary};
-  }
-`;
+    updateViewCounts();
+  }, []);
 
-const CategoryList = styled.ul`
-  list-style-type: none;
-  padding: 0;
-`;
-
-const CategoryItem = styled.li`
-  margin-bottom: 0.5rem;
-`;
-
-const CategoryLink = styled(Link)`
-  color: ${props => props.theme.text};
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const Sidebar = ({ categories, isOpen }) => {
   return (
     <SidebarWrapper isOpen={isOpen}>
-      <ProfileSection>
-        <ProfileImage src={profileImage} alt="Blog Host" />
-        <ProfileName>Kminimini</ProfileName>
-        <SocialLinks>
-          <SocialLink href="https://github.com/kminimini/kminimini" target="_blank" rel="noopener noreferrer">
-            <FaGithub />
-          </SocialLink>
-          <SocialLink href="" target="_blank" rel="noopener noreferrer">
-            <FaTwitter />
-          </SocialLink>
-          <SocialLink href="" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin />
-          </SocialLink>
-          <SocialLink href="mailto:jane@example.com">
-            <FaEnvelope />
-          </SocialLink>
-        </SocialLinks>
-      </ProfileSection>
-      <h2>Categories</h2>
-      <CategoryList>
-        {categories.map((category, index) => (
-          <CategoryItem key={index}>
-            <CategoryLink to={`/category/${category}`}>{category}</CategoryLink>
-          </CategoryItem>
-        ))}
-      </CategoryList>
+      <SidebarContent isOpen={isOpen}>
+        <ProfileSection>
+          <ProfileImage src={profileImage} alt="Blog Host" />
+          <ProfileName>도톨</ProfileName>
+          <SocialLinks>
+            <SocialLink href="https://github.com/kminimini/kminimini" target="_blank" rel="noopener noreferrer">
+              <FaGithub />
+            </SocialLink>
+            <SocialLink href="" target="_blank" rel="noopener noreferrer">
+              <FaTwitter />
+            </SocialLink>
+            <SocialLink href="" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin />
+            </SocialLink>
+            <SocialLink href="mailto:jane@example.com">
+              <FaEnvelope />
+            </SocialLink>
+          </SocialLinks>
+        </ProfileSection>
+        <BioSection>
+          <p>안녕하세요!</p>
+        </BioSection>
+        <h2>Categories</h2>
+        <CategoryList>
+          {categories.map((category, index) => (
+            <CategoryItem key={index}>
+              <CategoryLink to={`/category/${category}`}>{category}</CategoryLink>
+              <CategoryCount>{categoryCounts[category] || 0}</CategoryCount>
+            </CategoryItem>
+          ))}
+        </CategoryList>
+        <ViewCountSection>
+          <p>오늘 조회수: {viewCounts.daily}</p>
+          <p>전체 조회수: {viewCounts.total}</p>
+        </ViewCountSection>
+      </SidebarContent>
     </SidebarWrapper>
   );
 };
