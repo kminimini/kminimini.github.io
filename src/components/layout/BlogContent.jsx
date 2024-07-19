@@ -14,7 +14,6 @@ import {
   MainContent
 } from '../../styles/components/layout/BlogContent.styles'
 
-
 const BlogContent = ({ toggleTheme, isDarkMode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
   const [posts, setPosts] = useState(initialPosts);
@@ -54,7 +53,7 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
   return (
     <AppWrapper>
       <ContentWrapper>
-      <Sidebar 
+        <Sidebar 
           categories={categories} 
           isOpen={sidebarOpen} 
           categoryCounts={categoryCounts}
@@ -62,7 +61,7 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
         <MainContent sidebarOpen={sidebarOpen}>
           <Header toggleTheme={toggleTheme} toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} />
           <Routes>
-            <Route path="/" element={<Home posts={filteredPosts} />} />
+            <Route path="/" element={<Home posts={posts} />} />
             <Route path="/category/:category" element={<Home posts={filteredPosts} />} />
             <Route path="/post/:id" element={<PostDetail posts={posts} />} />
             <Route path="/new-post" element={<NewPost addPost={addPost} />} />
