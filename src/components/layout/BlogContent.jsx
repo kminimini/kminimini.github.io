@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Home from '../pages/Home';
 import PostDetail from '../pages/PostDetail';
 import NewPost from '../pages/NewPost';
+import CategoryPage from '../pages/CategoryPage';
 import ScrollToTopButton from '../common/ScrollToTopButton';
 import { posts as initialPosts } from '../../data/posts';
 import {
@@ -17,14 +18,9 @@ import {
 const BlogContent = ({ toggleTheme, isDarkMode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
   const [posts, setPosts] = useState(initialPosts);
-  const location = useLocation();
+  const navigate = useNavigate();
 
   const categories = useMemo(() => [...new Set(posts.map(post => post.category))], [posts]);
-
-  const filteredPosts = useMemo(() => {
-    const category = location.pathname.split('/').pop();
-    return category === '' ? posts : posts.filter(post => post.category === category);
-  }, [location, posts]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,6 +46,10 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
     }, {});
   }, [posts]);
 
+  const handleCategoryClick = (category) => {
+    navigate(`/category/${category.toLowerCase()}`)
+  };
+
   return (
     <AppWrapper>
       <ContentWrapper>
@@ -57,12 +57,17 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
           categories={categories} 
           isOpen={sidebarOpen} 
           categoryCounts={categoryCounts}
+          onCategoryClick={handleCategoryClick}
         />
         <MainContent sidebarOpen={sidebarOpen}>
-          <Header toggleTheme={toggleTheme} toggleSidebar={toggleSidebar} isDarkMode={isDarkMode} />
+          <Header 
+            toggleTheme={toggleTheme} 
+            toggleSidebar={toggleSidebar} 
+            isDarkMode={isDarkMode} 
+          />
           <Routes>
             <Route path="/" element={<Home posts={posts} />} />
-            <Route path="/category/:category" element={<Home posts={filteredPosts} />} />
+            <Route path="/category/:category" element={<CategoryPage posts={posts} />} />
             <Route path="/post/:id" element={<PostDetail posts={posts} />} />
             <Route path="/new-post" element={<NewPost addPost={addPost} />} />
           </Routes>
