@@ -5,7 +5,7 @@ export const CardWrapper = styled.div`
   background-color: ${props => props.theme.background};
   border: 1px solid ${props => props.theme.secondaryText};
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.5rem;
   transition: all 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
