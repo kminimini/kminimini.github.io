@@ -22,7 +22,7 @@ export const CategoryTitle = styled.h2`
 export const PostGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 0.3rem;
 `;
 
 export const MorePostsLink = styled(Link)`

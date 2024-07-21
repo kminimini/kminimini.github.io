@@ -3,7 +3,7 @@ export const posts = [
     id: 1,
     title: "React 시작하기",
     date: "2024-07-17",
-    content: "React는 사용자 인터페이스 구축에 널리 사용되는 자바스크립트 라이브러리입니다...이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.이곳에는 아무 내용을 담아 아무 내용으로 줄을 채워 ScrollToTopButton을 테스트 할 것입니다.",
+    content: "React는 사용자 인터페이스 구축에 널리 사용되는 자바스크립트 라이브러리입니다...",
     mainCategory: "지식 공유",
     category: "React"
   },
@@ -1038,5 +1038,13 @@ export const posts = [
     content: "이번 주말에는 근처 공원으로 산책을 다녀왔습니다...",
     category: "일상",
     mainCategory: "일상 공유"
+  },
+  {
+    id: 131,
+    title: "React Router 사용법",
+    date: "2024-06-22",
+    content: "React Router를 사용하여 SPA 내에서 다양한 경로와 뷰를 관리하는 방법을 배웁니다...",
+    mainCategory: "문제 해결",
+    category: "React"
   },
 ];

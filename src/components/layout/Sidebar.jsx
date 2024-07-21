@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import profileImage from '../../images/profile-image.jpg';
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { 
@@ -19,6 +20,7 @@ import {
 
 const Sidebar = ({ categories, isOpen, categoryCounts }) => {
   const [viewCounts, setViewCounts] = useState({ daily: 0, total: 0 });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const updateViewCounts = () => {
@@ -33,9 +35,7 @@ const Sidebar = ({ categories, isOpen, categoryCounts }) => {
       const lastReset = new Date(storedData.lastReset);
       const lastVisit = storedData.lastVisit ? new Date(storedData.lastVisit) : null;
 
-      // 마지막 방문이 없거나 다른 날짜인 경우에만 조회수 증가
       if (!lastVisit || lastVisit.toDateString() !== now.toDateString()) {
-        // 자정이 지났는지 확인
         if (now.toDateString() !== lastReset.toDateString()) {
           storedData.daily = 1;
           storedData.lastReset = now.toISOString();
@@ -53,6 +53,10 @@ const Sidebar = ({ categories, isOpen, categoryCounts }) => {
 
     updateViewCounts();
   }, []);
+
+  const handleCategoryClick = (category) => {
+    navigate(`/category/${category.toLowerCase()}`);
+  };
 
   return (
     <SidebarWrapper isOpen={isOpen}>
@@ -81,8 +85,8 @@ const Sidebar = ({ categories, isOpen, categoryCounts }) => {
         <h2>Categories</h2>
         <CategoryList>
           {categories.map((category, index) => (
-            <CategoryItem key={index}>
-              <CategoryLink to={`/category/${category}`}>{category}</CategoryLink>
+            <CategoryItem key={index} onClick={() => handleCategoryClick(category)}>
+              <CategoryLink>{category}</CategoryLink>
               <CategoryCount>{categoryCounts[category] || 0}</CategoryCount>
             </CategoryItem>
           ))}
