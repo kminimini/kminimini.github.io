@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CategoryPageWrapper = styled.div`
-  padding: 2rem;
+  padding: 5rem;
   max-width: 1200px;
   margin: 0 auto;
 `;
@@ -28,7 +28,7 @@ export const CategoryTitle = styled.h1`
 export const PostGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 0.2rem;
   margin-top: 2rem;
 `;
 
