@@ -36,3 +36,32 @@ export const BackLink = styled(Link)`
     text-decoration: underline;
   }
 `;
+
+export const NavigationButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+`;
+
+export const NavButton = styled.button`
+  background-color: ${props => props.theme.primary};
+  color: ${props => props.theme.text};
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  max-width: 45%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  ${props => props.isNext ? 'margin-left: auto;' : ''}
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:only-child {
+    ${props => props.isNext ? 'margin-left: auto;' : 'margin-right: auto;'}
+  }
+`;
