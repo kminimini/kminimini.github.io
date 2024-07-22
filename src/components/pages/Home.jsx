@@ -1,8 +1,11 @@
 import React from 'react';
 import CategorySection from '../layout/CategorySection';
 import { HomeWrapper, MainTitle, MainContent } from '../../styles/components/pages/Home.styles';
+import { getPosts } from '../../data/postManager';
 
-const Home = ({ posts }) => {
+const Home = () => {
+  // getPosts 함수를 사용하여 게시글 데이터를 가져옴.
+  const posts = getPosts();
   const categories = ['지식 공유', '문제 해결', '일상 공유'];
 
   return (

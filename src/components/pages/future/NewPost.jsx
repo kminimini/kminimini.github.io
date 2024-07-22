@@ -5,7 +5,7 @@ import {
   Input,
   TextArea,
   Button
-} from '../../styles/components/pages/NewPost.styles'
+} from '../../../styles/components/pages/NewPost.styles'
 
 const NewPost = ({ addPost }) => {
   const [title, setTitle] = useState('');

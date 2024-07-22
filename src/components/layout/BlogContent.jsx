@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect/*, useMemo*/ } from 'react';
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Home from '../pages/Home';
 import PostDetail from '../pages/PostDetail';
-import NewPost from '../pages/NewPost';
+// import NewPost from '../pages/future/NewPost'; // NewPost
 import CategoryPage from '../pages/CategoryPage';
 import ScrollToTopButton from '../common/ScrollToTopButton';
-import { posts as initialPosts } from '../../data/posts';
+import { /* getPosts,*/ getCategories, getCategoryCounts/*, addPost */ } from '../../data/postManager';
 import {
   AppWrapper,
   ContentWrapper,
@@ -17,11 +17,13 @@ import {
 
 const BlogContent = ({ toggleTheme, isDarkMode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
-  const [posts, setPosts] = useState(initialPosts);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const categories = useMemo(() => [...new Set(posts.map(post => post.category))], [posts]);
+  // getPosts, getCategories, getCategoryCounts 함수를 사용하여 데이터를 가져옴.
+  // const posts = getPosts(); // NewPost
+  const categories = getCategories();
+  const categoryCounts = getCategoryCounts();
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,16 +44,12 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const addPost = (newPost) => {
-    setPosts(prevPosts => [...prevPosts, newPost]);
+  // NewPost
+  /*
+  const handleAddPost = (newPost) => {
+    addPost(newPost);
   };
-
-  const categoryCounts = useMemo(() => {
-    return posts.reduce((acc, post) => {
-      acc[post.category] = (acc[post.category] || 0) + 1;
-      return acc;
-    }, {});
-  }, [posts]);
+  */
 
   const handleCategoryClick = (category) => {
     navigate(`/category/${category.toLowerCase()}`)
@@ -74,10 +72,10 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
             isDarkMode={isDarkMode} 
           />
           <Routes>
-            <Route path="/" element={<Home posts={posts} />} />
-            <Route path="/category/:category" element={<CategoryPage posts={posts} />} />
-            <Route path="/post/:id" element={<PostDetail posts={posts} />} />
-            <Route path="/new-post" element={<NewPost addPost={addPost} />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/category/:category" element={<CategoryPage />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+            {/*<Route path="/new-post" element={<NewPost addPost={handleAddPost} />} />*/} {/* NewPost */}
           </Routes>
         </MainContent>
       </ContentWrapper>
