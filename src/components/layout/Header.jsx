@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBars, FaSun, FaMoon, FaPlus } from 'react-icons/fa';
+import { FaBars, FaSun, FaMoon/*, FaPlus */ } from 'react-icons/fa';
 import { 
   HeaderWrapper, 
   Logo, 
@@ -8,7 +8,7 @@ import {
   MenuButton, 
   ThemeToggle, 
   ToggleThumb, 
-  NewPostButton 
+  // NewPostButton 
 } from '../../styles/components/layout/Header.styles';
 
 const Header = ({ toggleTheme, toggleSidebar, isDarkMode }) => {
@@ -21,9 +21,9 @@ const Header = ({ toggleTheme, toggleSidebar, isDarkMode }) => {
       <Nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>
-        <NewPostButton to="/new-post">
+        {/*<NewPostButton to="/new-post">
           <FaPlus /> New Post
-        </NewPostButton>
+        </NewPostButton>*/}
         <ThemeToggle onClick={toggleTheme}>
           <ToggleThumb isActive={isDarkMode}>
             {isDarkMode ? <FaMoon /> : <FaSun />}
