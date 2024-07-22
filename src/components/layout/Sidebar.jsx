@@ -18,7 +18,7 @@ import {
   ViewCountSection 
 } from '../../styles/components/layout/Sidebar.styles';
 
-const Sidebar = ({ categories, isOpen, categoryCounts }) => {
+const Sidebar = ({ categories, isOpen, categoryCounts, toggleSidebar }) => {
   const [viewCounts, setViewCounts] = useState({ daily: 0, total: 0 });
   const navigate = useNavigate();
 
@@ -56,6 +56,9 @@ const Sidebar = ({ categories, isOpen, categoryCounts }) => {
 
   const handleCategoryClick = (category) => {
     navigate(`/category/${category.toLowerCase()}`);
+    if (window.innerWidth <= 768) {
+      toggleSidebar();
+    }
   };
 
   return (
