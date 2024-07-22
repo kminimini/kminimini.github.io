@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
@@ -19,6 +19,7 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
   const [posts, setPosts] = useState(initialPosts);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const categories = useMemo(() => [...new Set(posts.map(post => post.category))], [posts]);
 
@@ -30,6 +31,12 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setSidebarOpen(false);
+    }
+  }, [location.pathname]);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -58,6 +65,7 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
           isOpen={sidebarOpen} 
           categoryCounts={categoryCounts}
           onCategoryClick={handleCategoryClick}
+          toggleSidebar={toggleSidebar}
         />
         <MainContent sidebarOpen={sidebarOpen}>
           <Header 
