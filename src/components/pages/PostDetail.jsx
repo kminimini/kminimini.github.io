@@ -15,7 +15,7 @@ const PostDetail = () => {
   const navigate = useNavigate();
   
   // 현재 게시글 가져오기
-  const post = getPostById(parseInt(id, 10));
+  const post = getPostById(parseInt(id));
 
   if (!post) {
     return <div>Post not found</div>;
