@@ -13,7 +13,6 @@ export const MainTitle = styled.h1`
   margin: 4rem 0 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  position: relative;
 
   &::after {
     content: '';

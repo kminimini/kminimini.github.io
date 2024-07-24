@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Home from '../pages/Home';
 import PostDetail from '../pages/PostDetail';
+import About from '../pages/About';
 // import NewPost from '../pages/future/NewPost'; // NewPost
 import CategoryPage from '../pages/CategoryPage';
 import ScrollToTopButton from '../common/ScrollToTopButton';
@@ -75,6 +76,7 @@ const BlogContent = ({ toggleTheme, isDarkMode }) => {
             <Route path="/" element={<Home />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/about" element={<About />} />
             {/*<Route path="/new-post" element={<NewPost addPost={handleAddPost} />} />*/} {/* NewPost */}
           </Routes>
         </MainContent>
