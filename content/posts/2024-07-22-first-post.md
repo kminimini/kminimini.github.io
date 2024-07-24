@@ -1,4 +1,5 @@
 ---
+id: 1
 title: "첫 번째 게시글"
 date: "2024-07-22"
 category: "React"
