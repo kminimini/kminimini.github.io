@@ -11,7 +11,6 @@ export const CategoryTitle = styled.h1`
   color: ${props => props.theme.primary};
   text-align: center;
   margin-bottom: 2rem;
-  position: relative;
   
   &::after {
     content: '';

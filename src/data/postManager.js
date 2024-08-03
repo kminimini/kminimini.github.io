@@ -36,8 +36,8 @@ export const getPostsByCategory = (category) => {
 
 // ID로 특정 게시글 가져오기
 export const getPostById = (id) => {
-  // ID를 문자열로 처리하여 비교.
-  return posts.find(post => post.id === id);
+  // ID를 숫자로 변환하여 비교
+  return posts.find(post => post.id === parseInt(id, 10));
 };
 
 // 새 게시글 추가 함수 (개발 환경에서만 사용)

@@ -24,9 +24,74 @@ export const PostMeta = styled.div`
 `;
 
 export const PostContent = styled.div`
-  line-height: 1.8;
-`;
+  line-height: 1.6;
+  font-size: 1.1rem;
 
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.25em; }
+
+  p {
+    margin-bottom: 16px;
+  }
+
+  a {
+    color: #0366d6;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  pre {
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+  }
+
+  code {
+    background-color: rgba(27,31,35,.05);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: .2em .4em;
+  }
+
+  ul, ol {
+    margin-bottom: 16px;
+    padding-left: 2em;
+  }
+
+  img {
+    max-width: 100%;
+    box-sizing: content-box;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: .25em solid #dfe2e5;
+  }
+
+  hr {
+    height: .25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #e1e4e8;
+    border: 0;
+  }
+`;
 export const BackLink = styled(Link)`
   display: inline-block;
   margin-top: 2rem;
