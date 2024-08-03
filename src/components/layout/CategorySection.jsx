@@ -28,7 +28,7 @@ const CategorySection = ({ category, posts }) => {
       <Pagination 
         postsPerPage={postsPerPage} 
         totalPosts={posts.length} 
-        paginate={paginate}
+        paginate={paginate} 
         currentPage={currentPage}
       />
     </CategorySectionWrapper>

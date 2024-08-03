@@ -1,5 +1,9 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { getPostById, getPostsByCategory } from '../../data/postManager';
 import {
   PostWrapper,
@@ -35,7 +39,32 @@ const PostDetail = () => {
     <PostWrapper>
       <PostTitle>{post.title}</PostTitle>
       <PostMeta>{post.date} | {post.category}</PostMeta>
-      <PostContent>{post.content}</PostContent>
+      <PostContent>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            code({node, inline, className, children, ...props}) {
+              const match = /language-(\w+)/.exec(className || '')
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  style={vscDarkPlus}
+                  language={match[1]}
+                  PreTag="div"
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              )
+            }
+          }}
+        >
+          {post.content}
+        </ReactMarkdown>
+      </PostContent>
       <NavigationButtons>
         {prevPost && (
           <NavButton onClick={() => navigate(`/post/${prevPost.id}`)}>
